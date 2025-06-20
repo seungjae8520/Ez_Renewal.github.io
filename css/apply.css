@@ -1,0 +1,229 @@
+/* 신청 페이지 스타일 - 토스 미니멀리즘 */
+
+/* ===========================
+   신청 섹션
+   =========================== */
+.apply {
+    padding: var(--spacing-xl) 0;
+}
+
+.apply__container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.apply__title {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+}
+
+/* ===========================
+   폼 스타일
+   =========================== */
+.form__section {
+    border: none;
+    margin-bottom: var(--spacing-xl);
+}
+
+.form__section-title {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    margin-bottom: var(--spacing-lg);
+}
+
+.form__field {
+    margin-bottom: var(--spacing-lg);
+}
+
+.form__label {
+    display: block;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    margin-bottom: var(--spacing-sm);
+}
+
+.form__input,
+.form__select,
+.form__textarea {
+    width: 100%;
+    padding: var(--spacing-sm);
+    font-size: var(--font-size-base);
+    border: none;
+    border-bottom: 1px solid var(--color-gray-200);
+    background-color: transparent;
+    transition: var(--transition-base);
+}
+
+.form__input:focus,
+.form__select:focus,
+.form__textarea:focus {
+    border-bottom-color: var(--color-primary);
+    background-color: var(--color-primary-light);
+}
+
+.form__input::placeholder,
+.form__textarea::placeholder {
+    color: var(--color-gray-500);
+}
+
+.form__select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0 center;
+    background-size: 20px;
+    padding-right: var(--spacing-lg);
+    appearance: none;
+}
+
+.form__textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* ===========================
+   체크박스 스타일
+   =========================== */
+.form__checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.form__checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.form__checkbox input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: var(--spacing-sm);
+    cursor: pointer;
+    position: relative;
+    appearance: none;
+    border: 1px solid var(--color-gray-200);
+    border-radius: 2px;
+    transition: var(--transition-base);
+}
+
+.form__checkbox input[type="checkbox"]:checked {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #2563EB 100%);
+    border-color: var(--color-primary);
+}
+
+.form__checkbox input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 6px;
+    width: 6px;
+    height: 10px;
+    border: solid var(--color-white);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.form__checkbox-text {
+    font-size: var(--font-size-base);
+}
+
+/* ===========================
+   약관 동의
+   =========================== */
+.form__agreement {
+    margin: var(--spacing-xl) 0;
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-surface) 100%);
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+}
+
+.form__agreement .form__checkbox:not(:last-child) {
+    margin-bottom: var(--spacing-sm);
+}
+
+/* ===========================
+   제출 버튼
+   =========================== */
+.form__submit {
+    width: 100%;
+    padding: var(--spacing-md);
+    font-size: var(--font-size-base);
+    font-weight: 500;
+}
+
+/* ===========================
+   헤더 뒤로가기 버튼
+   =========================== */
+.header__back {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-base);
+}
+
+.header__back:hover {
+    opacity: 0.6;
+}
+
+/* ===========================
+   모달
+   =========================== */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal__content {
+    background-color: var(--color-white);
+    padding: var(--spacing-xl);
+    border-radius: 8px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.modal__title {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-sm);
+}
+
+.modal__text {
+    color: var(--color-gray-500);
+    margin-bottom: var(--spacing-lg);
+}
+
+.modal__button {
+    width: 100%;
+}
+
+/* ===========================
+   반응형 디자인
+   =========================== */
+@media (max-width: 768px) {
+    .form__checkbox-group {
+        gap: var(--spacing-sm);
+    }
+    
+    .form__section {
+        margin-bottom: var(--spacing-lg);
+    }
+}
