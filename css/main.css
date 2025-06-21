@@ -506,27 +506,67 @@
 
 /* 서비스 카드 */
 .service-card {
-    padding: var(--spacing-lg);
     background: var(--color-white);
     border: 1px solid var(--color-border);
-    border-radius: 12px;
+    border-radius: 16px;
     position: relative;
     transition: all 0.3s ease;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 380px;
 }
 
 .service-card:hover {
     border-color: var(--color-primary);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(49, 130, 246, 0.12);
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(49, 130, 246, 0.15);
+}
+
+/* 서비스 카드 이미지 */
+.service-card__image {
+    width: 100%;
+    height: 240px;
+    background: linear-gradient(180deg, #F8FAFB 0%, #E8F2FF 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.service-card__image img {
+    width: auto;
+    height: 98%;
+    max-width: 126%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08));
+}
+
+.service-card:hover .service-card__image img {
+    transform: scale(1.06) translateY(-3px);
+}
+
+/* 서비스 카드 콘텐츠 */
+.service-card__content {
+    padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 /* 활성화된 카드 스타일 */
 .service-card.active {
     border-color: var(--color-primary);
-    background: var(--color-primary-light);
+    background: var(--color-white);
     box-shadow: 0 8px 20px rgba(49, 130, 246, 0.15);
+}
+
+.service-card.active .service-card__image {
+    background: var(--color-primary-light);
 }
 
 .service-card.active .service-card__link {
@@ -538,11 +578,14 @@
 .service-card__title {
     font-size: var(--font-size-lg);
     margin-bottom: var(--spacing-sm);
+    color: var(--color-text);
+    font-weight: 700;
 }
 
 .service-card__description {
     color: var(--color-gray-500);
     margin-bottom: var(--spacing-md);
+    flex: 1;
 }
 
 .service-card__link {
@@ -558,6 +601,7 @@
     background-color: var(--color-primary-light);
     color: var(--color-primary);
     transition: all 0.3s ease;
+    z-index: 1;
 }
 
 .service-card:hover .service-card__link {
@@ -907,6 +951,20 @@
         grid-template-columns: 1fr;
     }
     
+    /* 모바일에서 서비스 카드 이미지 크기 조정 */
+    .service-card__image {
+        height: 180px;
+    }
+    
+    .service-card__image img {
+        height: 91%;
+        max-width: 119%;
+    }
+    
+    .service-card__content {
+        padding: var(--spacing-md);
+    }
+    
     .footer__container {
         flex-direction: column;
         text-align: center;
@@ -1013,15 +1071,15 @@
 }
 
 .service-card:nth-child(1) {
-    animation-delay: 0.3s;
-}
-
-.service-card:nth-child(2) {
     animation-delay: 0.2s;
 }
 
-.service-card:nth-child(3) {
+.service-card:nth-child(2) {
     animation-delay: 0.3s;
+}
+
+.service-card:nth-child(3) {
+    animation-delay: 0.4s;
 }
 
 .cta__container {

@@ -1,0 +1,184 @@
+/* 전역 스타일 */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #1a1a1a;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* 헤더 */
+.apply-header {
+    background-color: #fff;
+    border-bottom: 1px solid #e9ecef;
+    padding: 16px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.apply-header__container {
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.apply-header__logo-link {
+    display: flex;
+    align-items: center;
+}
+
+.apply-header__logo {
+    height: 32px;
+    width: auto;
+}
+
+.apply-header__back {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    color: #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+.apply-header__back:hover {
+    color: #333;
+}
+
+/* 메인 컨텐츠 */
+.apply-main {
+    padding-top: 80px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.apply-container {
+    max-width: 768px;
+    margin: 0 auto;
+    padding: 0 16px 40px;
+    width: 100%;
+}
+
+/* 서비스 선택 */
+.service-selection {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.service-selection__title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #1a1a1a;
+}
+
+.service-selection__subtitle {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+/* 서비스 카드 */
+.service-cards {
+    display: grid;
+    gap: 16px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.service-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    background: #fff;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card:hover {
+    border-color: #007bff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 123, 255, 0.1);
+}
+
+.service-card:hover .service-card__arrow {
+    transform: translateX(4px);
+}
+
+.service-card__title {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    color: #1a1a1a;
+}
+
+.service-card__description {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.service-card__arrow {
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: #007bff;
+    transition: transform 0.2s ease;
+}
+
+/* 반응형 */
+@media (max-width: 480px) {
+    .apply-main {
+        padding-top: 65px;
+    }
+    
+    .service-selection {
+        padding: 20px 0;
+    }
+    
+    .service-selection__title {
+        font-size: 24px;
+    }
+    
+    .service-selection__subtitle {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+    
+    .service-card {
+        padding: 20px;
+    }
+    
+    .service-card__title {
+        font-size: 18px;
+    }
+    
+    .service-card__description {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,176 @@
+/* 서비스 상세 페이지 스타일 - 토스 미니멀리즘 */
+
+/* ===========================
+   서비스 히어로
+   =========================== */
+.service-hero {
+    padding: var(--spacing-xl) 0;
+    background: linear-gradient(180deg, var(--color-primary-light) 0%, var(--color-surface) 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, var(--color-primary-light) 0%, transparent 60%);
+    opacity: 0.3;
+    /* animation: rotate 30s linear infinite; */
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.service-hero__container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.service-hero__title {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 700;
+}
+
+.service-hero__subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--color-gray-500);
+    font-weight: 300;
+}
+
+/* ===========================
+   서비스 특징
+   =========================== */
+.service-features {
+    padding: var(--spacing-xl) 0;
+}
+
+.service-features__container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.feature {
+    text-align: center;
+    padding: var(--spacing-lg);
+}
+
+.feature__title {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 700;
+}
+
+.feature__description {
+    color: var(--color-gray-500);
+    line-height: 1.6;
+}
+
+/* ===========================
+   사용 방법
+   =========================== */
+.service-usage {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-gray-100);
+}
+
+.service-usage__container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.service-usage__title {
+    font-size: var(--font-size-lg);
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    font-weight: 700;
+}
+
+.usage-steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.usage-step {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background-color: var(--color-white);
+    border-radius: 4px;
+}
+
+.usage-step__number {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #2563EB 100%);
+    color: var(--color-white);
+    border-radius: 50%;
+    font-weight: 700;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(49, 130, 246, 0.3);
+}
+
+.usage-step__text {
+    flex: 1;
+    font-size: var(--font-size-base);
+}
+
+/* ===========================
+   서비스 CTA
+   =========================== */
+.service-cta {
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+}
+
+.service-cta__container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.service-cta__text {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* ===========================
+   반응형 디자인
+   =========================== */
+@media (max-width: 768px) {
+    .service-features__container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .feature {
+        padding: var(--spacing-md);
+    }
+    
+    .usage-step {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .service-hero__subtitle {
+        font-size: var(--font-size-base);
+    }
+}

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>무선 단말기 신청 - 이지웍스</title>
+    <meta name="description" content="이지웍스 무선 단말기 서비스 신청">
+    <link rel="icon" type="image/svg+xml" href="../../images/favicon.svg">
+    <link rel="alternate icon" type="image/png" href="../../images/logo.png">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="wireless-terminal.css">
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="apply-header">
+        <div class="apply-header__container">
+            <a href="../../index.html" class="apply-header__logo-link">
+                <img src="../../images/logo.png" alt="이지웍스" class="apply-header__logo">
+            </a>
+            <button class="apply-header__back" onclick="history.back()" aria-label="뒤로가기">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- 고정된 진행 상태 표시 -->
+    <div class="progress-indicator-fixed">
+        <div class="progress-container">
+            <div class="progress-step active" data-step="type">
+                <div class="progress-step__dot"></div>
+                <div class="progress-step__label">신청유형</div>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="documents">
+                <div class="progress-step__dot"></div>
+                <div class="progress-step__label">서류등록</div>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="basic">
+                <div class="progress-step__dot"></div>
+                <div class="progress-step__label">기본정보</div>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="additional">
+                <div class="progress-step__dot"></div>
+                <div class="progress-step__label">추가정보</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 메인 컨텐츠 -->
+    <main class="apply-main">
+        <div class="apply-container">
+            <!-- 신청 폼 헤더 -->
+            <div class="apply-form__header">
+                <h1 class="apply-form__title">무선 단말기 신청</h1>
+                <p class="apply-form__subtitle">어디서나 사용 가능한 무선 결제 단말기</p>
+            </div>
+
+            <form id="wirelessTerminalForm" enctype="multipart/form-data">
+                <input type="hidden" name="productType" value="wireless-terminal">
+                
+                <!-- 신청 유형 선택 -->
+                <section class="form-section" data-section="type">
+                    <h2 class="form-section__title">신청 유형 선택</h2>
+                    
+                    <div class="terminal-type-selection">
+                        <label class="radio-card">
+                            <input type="radio" name="terminalType" value="business" class="radio-card__input" checked>
+                            <div class="radio-card__content">
+                                <div class="radio-card__header">
+                                    <div class="radio-card__icon">🏢</div>
+                                    <h3 class="radio-card__title">사업자용</h3>
+                                </div>
+                                <p class="radio-card__description">사업자등록증을 보유한 사업자</p>
+                                <div class="radio-card__requirements">
+                                    <span class="requirement-tag">사업자등록증 필요</span>
+                                    <span class="requirement-tag">법인통장 가능</span>
+                                </div>
+                            </div>
+                        </label>
+                        
+                        <label class="radio-card">
+                            <input type="radio" name="terminalType" value="individual" class="radio-card__input">
+                            <div class="radio-card__content">
+                                <div class="radio-card__header">
+                                    <div class="radio-card__icon">👤</div>
+                                    <h3 class="radio-card__title">개인용</h3>
+                                </div>
+                                <p class="radio-card__description">개인 사업 활동을 하는 개인</p>
+                                <div class="radio-card__requirements">
+                                    <span class="requirement-tag">신분증만 필요</span>
+                                    <span class="requirement-tag">간편 신청</span>
+                                </div>
+                            </div>
+                        </label>
+                        
+                        <label class="radio-card">
+                            <input type="radio" name="terminalType" value="pg" class="radio-card__input">
+                            <div class="radio-card__content">
+                                <div class="radio-card__header">
+                                    <div class="radio-card__icon">💳</div>
+                                    <h3 class="radio-card__title">PG 신청</h3>
+                                </div>
+                                <p class="radio-card__description">온라인 결제 서비스가 필요한 경우</p>
+                                <div class="radio-card__requirements">
+                                    <span class="requirement-tag">웹사이트 운영</span>
+                                    <span class="requirement-tag">온라인 판매</span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </section>
+
+                <!-- 서류 등록 섹션 -->
+                <section class="form-section" data-section="documents">
+                    <h2 class="form-section__title">서류 등록</h2>
+                    
+                    <!-- 사업자용 서류 -->
+                    <div class="document-group" data-type="business">
+                        <div class="form-field">
+                            <label class="form-field__label">사업자등록증 <span class="required">*</span></label>
+                            <div class="file-upload">
+                                <input type="file" id="biz_license" name="biz_license" class="file-upload__input" 
+                                       accept=".jpg,.jpeg,.png">
+                                <label for="biz_license" class="file-upload__label">
+                                    <div class="file-upload__icon">📄</div>
+                                    <div class="file-upload__text">사업자등록증을 업로드해주세요</div>
+                                    <div class="file-upload__filename"></div>
+                                </label>
+                            </div>
+                            <span class="form-field__error">사업자등록증을 업로드해주세요</span>
+                        </div>
+                        
+                        <div class="form-field">
+                            <label class="form-field__label">영업신고증 (요식업만 해당)</label>
+                            <div class="file-upload">
+                                <input type="file" id="food_license" name="food_license" class="file-upload__input" 
+                                       accept=".jpg,.jpeg,.png">
+                                <label for="food_license" class="file-upload__label">
+                                    <div class="file-upload__icon">🍴</div>
+                                    <div class="file-upload__text">요식업의 경우 영업신고증을 업로드해주세요</div>
+                                    <div class="file-upload__filename"></div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 공통 서류 -->
+                    <div class="document-group-common">
+                        <div class="form-field">
+                            <label class="form-field__label">
+                                <span class="label-text-business">대표자 신분증</span>
+                                <span class="label-text-individual" style="display: none;">신분증</span>
+                                <span class="label-text-pg" style="display: none;">신분증</span>
+                                <span class="required">*</span>
+                            </label>
+                            <div class="file-upload">
+                                <input type="file" id="id_image" name="id_image" class="file-upload__input" 
+                                       accept=".jpg,.jpeg,.png" required>
+                                <label for="id_image" class="file-upload__label">
+                                    <div class="file-upload__icon">🪪</div>
+                                    <div class="file-upload__text">
+                                        <span class="text-business">대표자 신분증을 업로드해주세요</span>
+                                        <span class="text-individual" style="display: none;">신분증을 업로드해주세요</span>
+                                        <span class="text-pg" style="display: none;">신분증을 업로드해주세요</span>
+                                    </div>
+                                    <div class="file-upload__filename"></div>
+                                </label>
+                            </div>
+                            <span class="form-field__error">신분증을 업로드해주세요</span>
+                        </div>
+                        
+                        <div class="form-field">
+                            <label class="form-field__label">통장 사본 <span class="required">*</span></label>
+                            <div class="file-upload">
+                                <input type="file" id="bank_copy" name="bank_copy" class="file-upload__input" 
+                                       accept=".jpg,.jpeg,.png" required>
+                                <label for="bank_copy" class="file-upload__label">
+                                    <div class="file-upload__icon">🏦</div>
+                                    <div class="file-upload__text">입금받으실 통장 사본을 업로드해주세요</div>
+                                    <div class="file-upload__filename"></div>
+                                </label>
+                            </div>
+                            <span class="form-field__error">통장 사본을 업로드해주세요</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 기본 정보 섹션 -->
+                <section class="form-section" data-section="basic">
+                    <h2 class="form-section__title">기본 정보</h2>
+                    
+                    <!-- 개인용일 때만 이름 필드 표시 -->
+                    <div class="form-field" id="name-field" style="display: none;">
+                        <label class="form-field__label" for="name">이름 <span class="required">*</span></label>
+                        <input type="text" id="name" name="name" class="form-field__input">
+                        <span class="form-field__error">이름을 입력해주세요</span>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label class="form-field__label" for="email">이메일 <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" class="form-field__input" 
+                               placeholder="example@email.com" required>
+                        <span class="form-field__error">올바른 이메일을 입력해주세요</span>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label class="form-field__label" for="phone">
+                            <span class="label-text-business">대표자 연락처</span>
+                            <span class="label-text-individual" style="display: none;">연락처</span>
+                            <span class="label-text-pg" style="display: none;">연락처</span>
+                            <span class="required">*</span>
+                        </label>
+                        <input type="tel" id="phone" name="phone" class="form-field__input" 
+                               placeholder="010-0000-0000" required>
+                        <span class="form-field__error">연락처를 입력해주세요</span>
+                    </div>
+                </section>
+
+                <!-- 추가 정보 섹션 -->
+                <section class="form-section" data-section="additional">
+                    <h2 class="form-section__title">추가 정보</h2>
+                    
+                    <!-- 개인/사업자용 주소 -->
+                    <div class="additional-group" data-type="individual,business">
+                        <div class="form-field">
+                            <label class="form-field__label" for="address_main">주소 <span class="required">*</span></label>
+                            <input type="text" id="address_main" name="address_main" class="form-field__input" 
+                                   placeholder="기본 주소">
+                            <span class="form-field__error">주소를 입력해주세요</span>
+                        </div>
+                        
+                        <div class="form-field">
+                            <input type="text" id="address_detail" name="address_detail" class="form-field__input" 
+                                   placeholder="상세 주소">
+                        </div>
+                    </div>
+                    
+                    <!-- PG용 추가 정보 -->
+                    <div class="additional-group" data-type="pg" style="display: none;">
+                        <div class="form-field">
+                            <label class="form-field__label" for="website_url">웹사이트 URL</label>
+                            <input type="url" id="website_url" name="website_url" class="form-field__input" 
+                                   placeholder="https://example.com">
+                        </div>
+                        
+                        <div class="form-field">
+                            <label class="form-field__label" for="service_description">판매 상품/서비스 설명 <span class="required">*</span></label>
+                            <textarea id="service_description" name="service_description" class="form-field__input" 
+                                      rows="4" placeholder="판매하시는 상품이나 서비스에 대해 간략히 설명해주세요"></textarea>
+                            <span class="form-field__error">판매 상품/서비스를 설명해주세요</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 공통 추가 정보 -->
+                    <div class="form-field">
+                        <label class="form-field__label" for="message">문의사항</label>
+                        <textarea id="message" name="message" class="form-field__input" 
+                                  rows="3" placeholder="궁금한 점이 있으시면 자유롭게 작성해주세요"></textarea>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label class="form-field__label" for="agent_code">영업자 코드 (선택)</label>
+                        <input type="text" id="agent_code" name="agent_code" class="form-field__input" 
+                               placeholder="영업자 코드가 있으신 경우 입력해주세요">
+                    </div>
+                    
+                    <div class="form-field">
+                        <label class="form-field__label" for="agent_phone">영업자 전화번호 (선택)</label>
+                        <input type="tel" id="agent_phone" name="agent_phone" class="form-field__input" 
+                               placeholder="영업자 전화번호를 입력해주세요">
+                    </div>
+                    
+                    <!-- 약관 동의 -->
+                    <div class="terms-section">
+                        <div class="checkbox-field">
+                            <input type="checkbox" id="terms_agree" name="terms_agree" class="checkbox-field__input" required>
+                            <label for="terms_agree" class="checkbox-field__label">
+                                이용약관 및 개인정보 처리방침에 동의합니다 <span class="required">*</span>
+                            </label>
+                        </div>
+                        <span class="form-field__error">약관에 동의해주세요</span>
+                    </div>
+                </section>
+
+                <!-- 제출 버튼 -->
+                <div class="form-actions">
+                    <button type="submit" class="btn btn--primary btn--full">
+                        신청하기
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- 성공 메시지 -->
+    <div id="successMessage" class="success-overlay" style="display: none;">
+        <div class="success-message">
+            <div class="success-icon">✓</div>
+            <h1 class="success-title">신청이 완료되었습니다</h1>
+            <p class="success-description">
+                담당자가 영업일 기준 1~2일 내에<br>
+                연락드릴 예정입니다.
+            </p>
+            <button class="btn btn--primary btn--full" onclick="location.href='../../index.html'">
+                홈으로 돌아가기
+            </button>
+        </div>
+    </div>
+
+    <script src="wireless-terminal.js"></script>
+</body>
+</html>

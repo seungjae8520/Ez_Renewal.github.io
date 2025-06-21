@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TID 다중 결제 신청 - 이지웍스</title>
+    <meta name="description" content="이지웍스 TID 다중 결제 서비스 신청">
+    <link rel="icon" type="image/svg+xml" href="../../images/favicon.svg">
+    <link rel="alternate icon" type="image/png" href="../../images/logo.png">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="multi-tid.css">
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="apply-header">
+        <div class="apply-header__container">
+            <a href="../../index.html" class="apply-header__logo-link">
+                <img src="../../images/logo.png" alt="이지웍스" class="apply-header__logo">
+            </a>
+            <button class="apply-header__back" onclick="history.back()" aria-label="뒤로가기">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- 고정된 진행 상태 표시 -->
+    <div class="progress-indicator-fixed">
+        <div class="progress-container">
+            <div class="progress-step active" data-step="account1">
+                <div class="progress-step__dot"></div>
+                <div class="progress-step__label">1번계좌</div>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="account2">
+                <div class="progress-step__dot"></div>
+                <div class="progress-step__label">2번계좌</div>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="contact">
+                <div class="progress-step__dot"></div>
+                <div class="progress-step__label">연락정보</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 메인 컨텐츠 -->
+    <main class="apply-main">
+        <div class="apply-container">
+            <!-- 신청 폼 헤더 -->
+            <div class="apply-form__header">
+                <h1 class="apply-form__title">TID 다중 결제 신청</h1>
+                <p class="apply-form__subtitle">여러 계좌로 매출을 나누어 받으세요</p>
+            </div>
+
+            <form id="multiTidForm" enctype="multipart/form-data">
+                <input type="hidden" name="productType" value="multi-tid">
+                
+                <!-- 1번 계좌 정보 섹션 -->
+                <section class="form-section" data-section="account1">
+                    <h2 class="form-section__title">첫 번째 계좌 정보</h2>
+                    
+                    <div class="form-field">
+                        <label class="form-field__label">사업자등록증 <span class="required">*</span></label>
+                        <div class="file-upload">
+                            <input type="file" id="biz_license_tid1" name="biz_license_tid1" class="file-upload__input" 
+                                   accept=".jpg,.jpeg,.png" required>
+                            <label for="biz_license_tid1" class="file-upload__label">
+                                <div class="file-upload__icon">📄</div>
+                                <div class="file-upload__text">사업자등록증을 업로드해주세요</div>
+                                <div class="file-upload__filename"></div>
+                            </label>
+                        </div>
+                        <span class="form-field__error">사업자등록증을 업로드해주세요</span>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label class="form-field__label">통장 사본 <span class="required">*</span></label>
+                        <div class="file-upload">
+                            <input type="file" id="bank_copy_tid1" name="bank_copy_tid1" class="file-upload__input" 
+                                   accept=".jpg,.jpeg,.png" required>
+                            <label for="bank_copy_tid1" class="file-upload__label">
+                                <div class="file-upload__icon">🏦</div>
+                                <div class="file-upload__text">첫 번째 입금 통장 사본</div>
+                                <div class="file-upload__filename"></div>
+                            </label>
+                        </div>
+                        <span class="form-field__error">통장 사본을 업로드해주세요</span>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label class="form-field__label">대표자 신분증 <span class="required">*</span></label>
+                        <div class="file-upload">
+                            <input type="file" id="id_tid1" name="id_tid1" class="file-upload__input" 
+                                   accept=".jpg,.jpeg,.png" required>
+                            <label for="id_tid1" class="file-upload__label">
+                                <div class="file-upload__icon">🪪</div>
+                                <div class="file-upload__text">대표자 신분증</div>
+                                <div class="file-upload__filename"></div>
+                            </label>
+                        </div>
+                        <span class="form-field__error">대표자 신분증을 업로드해주세요</span>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label class="form-field__label" for="account1_ratio">입금 비율 <span class="required">*</span></label>
+                        <div class="input-group">
+                            <input type="number" id="account1_ratio" name="account1_ratio" class="form-field__input" 
+                                   min="1" max="99" placeholder="50" required>
+                            <span class="input-suffix">%</span>
+                        </div>
+                        <span class="form-field__helper">전체 매출 중 첫 번째 계좌로 입금받을 비율</span>
+                        <span class="form-field__error">1~99 사이의 값을 입력해주세요</span>
+                    </div>
+                </section>
+
+                <!-- 2번 계좌 정보 섹션 -->
+                <section class="form-section" data-section="account2">
+                    <h2 class="form-section__title">두 번째 계좌 정보</h2>
+                    
+                    <div class="form-field">
+                        <label class="form-field__label">계좌 구분 <span class="required">*</span></label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="account2_type" value="business" class="radio-input" checked>
+                                <span class="radio-text">사업자 계좌</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="account2_type" value="individual" class="radio-input">
+                                <span class="radio-text">개인 계좌</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label class="form-field__label">
+                            <span class="label-text-business">사업자등록증</span>
+                            <span class="label-text-individual" style="display: none;">신분증</span>
+                            <span class="required">*</span>
+                        </label>
+                        <div class="file-upload">
+                            <input type="file" id="id_tid2" name="id_tid2" class="file-upload__input" 
+                                   accept=".jpg,.jpeg,.png" required>
+                            <label for="id_tid2" class="file-upload__label">
+                                <div class="file-upload__icon">📄</div>
+                                <div class="file-upload__text">
+                                    <span class="text-business">사업자등록증을 업로드해주세요</span>
+                                    <span class="text-individual" style="display: none;">신분증을 업로드해주세요</span>
+                                </div>
+                                <div class="file-upload__filename"></div>
+                            </label>
+                        </div>
+                        <span class="form-field__error">서류를 업로드해주세요</span>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label class="form-field__label">통장 사본 <span class="required">*</span></label>
+                        <div class="file-upload">
+                            <input type="file" id="bank_copy_tid2" name="bank_copy_tid2" class="file-upload__input" 
+                                   accept=".jpg,.jpeg,.png" required>
+                            <label for="bank_copy_tid2" class="file-upload__label">
+                                <div class="file-upload__icon">🏦</div>
+                                <div class="file-upload__text">두 번째 입금 통장 사본</div>
+                                <div class="file-upload__filename"></div>
+                            </label>
+                        </div>
+                        <span class="form-field__error">통장 사본을 업로드해주세요</span>
+                    </div>
+                    
+                    <div class="form-field" id="representative_id_field">
+                        <label class="form-field__label">대표자 신분증 <span class="required">*</span></label>
+                        <div class="file-upload">
+                            <input type="file" id="id_tid2_representative" name="id_tid2_representative" class="file-upload__input" 
+                                   accept=".jpg,.jpeg,.png">
+                            <label for="id_tid2_representative" class="file-upload__label">
+                                <div class="file-upload__icon">🪪</div>
+                                <div class="file-upload__text">대표자 신분증</div>
+                                <div class="file-upload__filename"></div>
+                            </label>
+                        </div>
+                        <span class="form-field__error">대표자 신분증을 업로드해주세요</span>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label class="form-field__label" for="account2_ratio">입금 비율</label>
+                        <div class="input-group">
+                            <input type="number" id="account2_ratio" name="account2_ratio" class="form-field__input" 
+                                   readonly>
+                            <span class="input-suffix">%</span>
+                        </div>
+                        <span class="form-field__helper">나머지 비율이 자동으로 계산됩니다</span>
+                    </div>
+                </section>
+
+                <!-- 연락 정보 섹션 -->
+                <section class="form-section" data-section="contact">
+                    <h2 class="form-section__title">연락 정보</h2>
+                    
+                    <div class="form-field">
+                        <label class="form-field__label" for="email">이메일 <span class="required">*</span></label>
+                        <input type="email" id="email" name="email" class="form-field__input" 
+                               placeholder="example@email.com" required>
+                        <span class="form-field__error">올바른 이메일을 입력해주세요</span>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label class="form-field__label" for="phone">대표자 연락처 <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" class="form-field__input" 
+                               placeholder="010-0000-0000" required>
+                        <span class="form-field__error">연락처를 입력해주세요</span>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label class="form-field__label" for="message">문의사항</label>
+                        <textarea id="message" name="message" class="form-field__input" 
+                                  rows="3" placeholder="궁금한 점이 있으시면 자유롭게 작성해주세요"></textarea>
+                    </div>
+                    
+                    <div class="form-field">
+                        <label class="form-field__label" for="agent_code">영업자 코드 (선택)</label>
+                        <input type="text" id="agent_code" name="agent_code" class="form-field__input" 
+                               placeholder="영업자 코드가 있으신 경우 입력해주세요">
+                    </div>
+                    
+                    <div class="form-field">
+                        <label class="form-field__label" for="agent_phone">영업자 전화번호 (선택)</label>
+                        <input type="tel" id="agent_phone" name="agent_phone" class="form-field__input" 
+                               placeholder="영업자 전화번호를 입력해주세요">
+                    </div>
+                    
+                    <!-- 약관 동의 -->
+                    <div class="terms-section">
+                        <div class="checkbox-field">
+                            <input type="checkbox" id="terms_agree" name="terms_agree" class="checkbox-field__input" required>
+                            <label for="terms_agree" class="checkbox-field__label">
+                                이용약관 및 개인정보 처리방침에 동의합니다 <span class="required">*</span>
+                            </label>
+                        </div>
+                        <span class="form-field__error">약관에 동의해주세요</span>
+                    </div>
+                </section>
+
+                <!-- 제출 버튼 -->
+                <div class="form-actions">
+                    <button type="submit" class="btn btn--primary btn--full">
+                        신청하기
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- 성공 메시지 -->
+    <div id="successMessage" class="success-overlay" style="display: none;">
+        <div class="success-message">
+            <div class="success-icon">✓</div>
+            <h1 class="success-title">신청이 완료되었습니다</h1>
+            <p class="success-description">
+                담당자가 영업일 기준 1~2일 내에<br>
+                연락드릴 예정입니다.
+            </p>
+            <button class="btn btn--primary btn--full" onclick="location.href='../../index.html'">
+                홈으로 돌아가기
+            </button>
+        </div>
+    </div>
+
+    <script src="multi-tid.js"></script>
+</body>
+</html>
