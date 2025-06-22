@@ -72,7 +72,7 @@
                             <div class="radio-card__content">
                                 <div class="radio-card__header">
                                     <div class="radio-card__icon">🏢</div>
-                                    <h3 class="radio-card__title">사업자용</h3>
+                                    <h3 class="radio-card__title">사업자가 있는 경우(클릭)</h3>
                                 </div>
                                 <p class="radio-card__description">사업자등록증을 보유한 사업자</p>
                                 <div class="radio-card__requirements">
@@ -87,7 +87,7 @@
                             <div class="radio-card__content">
                                 <div class="radio-card__header">
                                     <div class="radio-card__icon">👤</div>
-                                    <h3 class="radio-card__title">개인용</h3>
+                                    <h3 class="radio-card__title">비사업자(PG)</h3>
                                 </div>
                                 <p class="radio-card__description">개인 사업 활동을 하는 개인</p>
                                 <div class="radio-card__requirements">
@@ -198,6 +198,14 @@
                         <label class="form-field__label" for="name">이름 <span class="required">*</span></label>
                         <input type="text" id="name" name="name" class="form-field__input">
                         <span class="form-field__error">이름을 입력해주세요</span>
+                    </div>
+                    
+                    <!-- 개인용일 때만 영수증 상호 필드 표시 -->
+                    <div class="form-field" id="receipt-name-field" style="display: none;">
+                        <label class="form-field__label" for="receipt_name">영수증 상호 <span class="required">*</span></label>
+                        <input type="text" id="receipt_name" name="receipt_name" class="form-field__input" 
+                               placeholder="영수증에 표시될 상호명을 입력해주세요">
+                        <span class="form-field__error">영수증 상호를 입력해주세요</span>
                     </div>
                     
                     <div class="form-field">

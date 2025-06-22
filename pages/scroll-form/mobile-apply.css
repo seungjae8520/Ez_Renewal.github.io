@@ -246,6 +246,47 @@ body {
     display: block;
 }
 
+/* 금액 입력 필드 */
+.input-with-unit {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.form-field__input--amount {
+    padding-right: 40px;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.input-unit {
+    position: absolute;
+    right: 16px;
+    color: #666;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+.form-field__helper {
+    font-size: 13px;
+    color: #666;
+    margin-top: 6px;
+    margin-bottom: 0;
+}
+
+.info-tooltip {
+    display: inline-block;
+    margin-left: 4px;
+    color: #666;
+    font-size: 12px;
+    cursor: help;
+    font-weight: normal;
+}
+
+.info-tooltip:hover {
+    color: #007bff;
+}
+
 /* 파일 업로드 */
 .file-upload {
     position: relative;

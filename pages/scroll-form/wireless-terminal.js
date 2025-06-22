@@ -170,12 +170,26 @@ class WirelessTerminalFormManager {
         // 이름 필드 표시/숨김 처리
         const nameField = document.getElementById('name-field');
         const nameInput = document.getElementById('name');
+        const receiptNameField = document.getElementById('receipt-name-field');
+        const receiptNameInput = document.getElementById('receipt_name');
+        
         if (type === 'individual' || type === 'pg') {
             nameField.style.display = 'block';
             nameInput.setAttribute('required', '');
+            
+            // 비사업자(개인)인 경우에만 영수증 상호 필드 표시
+            if (type === 'individual') {
+                receiptNameField.style.display = 'block';
+                receiptNameInput.setAttribute('required', '');
+            } else {
+                receiptNameField.style.display = 'none';
+                receiptNameInput.removeAttribute('required');
+            }
         } else {
             nameField.style.display = 'none';
             nameInput.removeAttribute('required');
+            receiptNameField.style.display = 'none';
+            receiptNameInput.removeAttribute('required');
         }
         
         // 추가 정보 섹션 업데이트

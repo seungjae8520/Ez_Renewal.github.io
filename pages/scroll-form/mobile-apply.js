@@ -305,3 +305,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// 금액 포맷팅
+document.addEventListener('DOMContentLoaded', () => {
+    const amountInput = document.getElementById('usage_limit');
+    
+    if (amountInput) {
+        // 포커스 시 콤마 제거
+        amountInput.addEventListener('focus', (e) => {
+            e.target.value = e.target.value.replace(/,/g, '');
+        });
+        
+        // 입력 시 숫자만 허용
+        amountInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/[^0-9]/g, '');
+            e.target.value = value;
+        });
+        
+        // 포커스 아웃 시 콤마 추가
+        amountInput.addEventListener('blur', (e) => {
+            let value = e.target.value.replace(/,/g, '');
+            if (value) {
+                // 천 단위 콤마 추가
+                value = parseInt(value).toLocaleString('ko-KR');
+                e.target.value = value;
+            }
+        });
+        
+        // 초기값 포맷팅
+        if (amountInput.value) {
+            let value = amountInput.value.replace(/,/g, '');
+            amountInput.value = parseInt(value).toLocaleString('ko-KR');
+        }
+    }
+});

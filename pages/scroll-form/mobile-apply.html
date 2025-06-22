@@ -111,9 +111,14 @@
                     </div>
                     
                     <div class="form-field">
-                        <label class="form-field__label" for="usage_limit">사용 한도</label>
-                        <input type="text" id="usage_limit" name="usage_limit" class="form-field__input" 
-                               placeholder="희망하는 사용 한도를 입력해주세요">
+                        <label class="form-field__label" for="usage_limit">월 사용 한도 <span class="info-tooltip" title="월 최대 결제 가능 금액">ⓘ</span></label>
+                        <div class="input-with-unit">
+                            <input type="text" id="usage_limit" name="usage_limit" class="form-field__input form-field__input--amount" 
+                                   value="45,000,000" placeholder="희망하는 사용 한도를 입력해주세요" 
+                                   pattern="[0-9,]+" maxlength="20">
+                            <span class="input-unit">원</span>
+                        </div>
+                        <p class="form-field__helper">* 기본 한도: 4,500만원 (심사 후 조정될 수 있습니다)</p>
                     </div>
                 </section>
 
